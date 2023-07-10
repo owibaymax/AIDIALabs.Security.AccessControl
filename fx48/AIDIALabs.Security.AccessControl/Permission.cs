@@ -22,11 +22,11 @@ namespace AIDIALabs.Security.AccessControl
                 DirectorySecurity directorySecurity;
                 AccessRule rule;
                 bool modified = false;
-                SecurityIdentifier securityIdentifier = new(WellKnownSidType.BuiltinUsersSid, null);
+                SecurityIdentifier securityIdentifier = new SecurityIdentifier(WellKnownSidType.BuiltinUsersSid, null);
 
                 if (Directory.Exists(ManufactureFolderPath))
                 {
-                    directoryInfo = new(ManufactureFolderPath);
+                    directoryInfo = new DirectoryInfo(ManufactureFolderPath);
                     directorySecurity = directoryInfo.GetAccessControl();
                     rule = new FileSystemAccessRule(
                             securityIdentifier,
@@ -39,7 +39,7 @@ namespace AIDIALabs.Security.AccessControl
 
                     if (Directory.Exists(ApplicationFolderPath))
                     {
-                        directoryInfo = new(ApplicationFolderPath);
+                        directoryInfo = new DirectoryInfo(ApplicationFolderPath);
                         directorySecurity = directoryInfo.GetAccessControl();
                         rule = new FileSystemAccessRule(
                             securityIdentifier,
